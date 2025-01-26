@@ -1,7 +1,7 @@
-# Sensor Storm
+# Ratatoskr
 
-![Stars](https://img.shields.io/github/stars/Physlex/SensorStorm)
-![Issues](https://img.shields.io/github/issues/Physlex/SensorStorm)
+![Stars](https://img.shields.io/github/stars/UASTARR/Ratatoskr)
+![Issues](https://img.shields.io/github/issues/UASTARR/Ratatoskr)
 
 
 ## Overview
