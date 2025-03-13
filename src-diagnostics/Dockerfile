@@ -18,13 +18,5 @@ RUN apt-get install -y \
 
 # Prepare the runtime environment with our files
 COPY CMakeLists.txt ./
-COPY . ./src-diagnostics/
-
-# Actually run the build
-RUN ls
-RUN mkdir -p /ratatoskr/build
-RUN cmake -S .
-RUN cmake --build build
-
-# Run the program
-CMD ["./build/diagnostics"]
+COPY ./vendor /ratatoskr/vendor/
+COPY ./src-diagnostics/ /ratatoskr/src-diagnostics/
