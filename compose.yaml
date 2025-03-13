@@ -1,14 +1,9 @@
 services:
-  weather-station:
-    build:
-      context: .
-      target: weather-station
+  diagnostics:
+    build: ./src-diagnostics
     platform: linux/arm64
 
-  nmqx:
-    build:
-      context: .
-      target: nmqx
+  mqtt-broker:
+    build: ./src-message-broker
     ports:
-      - 1883:1883
-    platform: linux/arm64
+      - "1883:1883"
