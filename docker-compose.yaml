@@ -1,0 +1,13 @@
+services:
+  diagnostics:
+    build:
+      context: .
+      dockerfile: ./src-diagnostics/Dockerfile
+    platform: linux/arm64
+
+  mqtt-broker:
+    build:
+      context: .
+      dockerfile: ./src-message-broker/Dockerfile
+    ports:
+      - "1883:1883"

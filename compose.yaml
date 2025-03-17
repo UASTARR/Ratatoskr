@@ -1,9 +1,0 @@
-services:
-  diagnostics:
-    build: ./src-diagnostics
-    platform: linux/arm64
-
-  mqtt-broker:
-    build: ./src-message-broker
-    ports:
-      - "1883:1883"

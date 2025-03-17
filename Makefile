@@ -1,16 +1,16 @@
 # This Makefile is explicitly used to simplify working with docker builds
 
 # PROJECT SPECIFICATIONS
-PROJECT_NAME:=sensorstorm-image
+PROJECT_NAME:=ratatoskr-image
 DOCKER:=docker
-WORKSPACE:=.
+WORKSPACE:=src-diagnostics
 
 # COMMANDS AND CONFIG
-BUILD:=build
+BUILD:=buildx build
 RUN:=run
 
 # EMULATED HOST SETUP
-HOST_TAG:=-t sensorstorm-host-image
+HOST_TAG:=-t ratatoskr-image
 QEMU_SETUP:=--privileged multiarch/qemu-user-static --reset -p yes
 PLATFORM:=--platform linux/arm64
 QUIETLY:=> /dev/null 2>&1

@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-base:r32.1 AS diagnostics
+FROM --platform=arm64 nvcr.io/nvidia/l4t-base:r32.1 AS diagnostics
 
 # Set working directory
 WORKDIR /ratatoskr/
@@ -17,6 +17,4 @@ RUN apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # Prepare the runtime environment with our files
-COPY CMakeLists.txt ./
-COPY ./vendor /ratatoskr/vendor/
-COPY ./src-diagnostics/ /ratatoskr/src-diagnostics/
+COPY CMakeLists.txt /ratatoskr/
