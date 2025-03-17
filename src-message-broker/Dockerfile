@@ -1,4 +1,4 @@
-FROM emqx/nanomq AS message-broker
+FROM --platform=arm64 emqx/nanomq AS message-broker
 
 EXPOSE 1883
 

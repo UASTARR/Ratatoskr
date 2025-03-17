@@ -11,3 +11,4 @@ services:
       dockerfile: ./src-message-broker/Dockerfile
     ports:
       - "1883:1883"
+    platform: linux/arm64
