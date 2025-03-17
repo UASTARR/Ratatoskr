@@ -1,0 +1,21 @@
+name: CI Workflow for automated testing of the weatherflow project
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Build the system
+        run: |
+          ./scripts/restart.sh
+
+      - name: Shutdown docker orchestration
+        if: always()
+        run: |
+          docker compose down -v
