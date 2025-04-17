@@ -1,6 +1,7 @@
 services:
   diagnostics:
     platform: linux/arm64 # Run in arm64 linux container
+    image: ratatoskr/diagnostics # Namespaced artifact (image) name
 
     build:
       context: .
@@ -8,6 +9,7 @@ services:
 
   broker:
     platform: linux/arm64
+    image: ratatoskr/broker
 
     build:
       context: .
