@@ -42,21 +42,3 @@ Saves a deployable tar to the current file.
 ```sh
 $ ./serialize -o .
 ```
-
-
-## DEPLOY
-
-Deploys to the jetson nano.
-
-See the deploy script for details.
-
-#### Usage
-
-```sh
-$ python3 deploy.py \<ipv4-dst\>
-```
-
-where the ipv4-dst is the destination ip address for the jetson nano.
-
-NOTE: The jetson nano is meant to have a static ip. Consult the root README for further
-details.
