@@ -18,14 +18,14 @@ RUN apt-get install -y \
 
 # Prepare the root of the virtual environment
 COPY CMakeLists.txt /ratatoskr/
-COPY ./vendor/ /ratatoskr/
+COPY ./vendor/ /ratatoskr/vendor/
 
 # Prepare this environment
 COPY ./src-diagnostics/CMakeLists.txt /ratatoskr/src-diagnostics/
-COPY ./src-diagnostics/src/ /ratatoskr/src-diagnostics/
+COPY ./src-diagnostics/src/ /ratatoskr/src-diagnostics/src/
 
-# TODO: This part
-# # Get cmake going
-# RUN cmake -S .
-# RUN cmake --build
-# CMD ["./bin/diagnostics"]
+# Get cmake going
+RUN cmake -S .
+RUN cmake --build .
+
+CMD ["./bin/diagnostics"]

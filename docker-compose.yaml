@@ -1,14 +1,17 @@
 services:
   diagnostics:
+    platform: linux/arm64 # Run in arm64 linux container
+
     build:
       context: .
       dockerfile: ./src-diagnostics/Dockerfile
+
+  broker:
     platform: linux/arm64
 
-  mqtt-broker:
     build:
       context: .
-      dockerfile: ./src-message-broker/Dockerfile
+      dockerfile: ./src-broker/Dockerfile
+
     ports:
       - "1883:1883"
-    platform: linux/arm64
