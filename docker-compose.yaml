@@ -1,15 +1,7 @@
 services:
-  diagnostics:
-    platform: linux/arm64 # Run in arm64 linux container
-    image: ratatoskr/diagnostics # Namespaced artifact (image) name
-
-    build:
-      context: .
-      dockerfile: ./src-diagnostics/Dockerfile
-
   broker:
-    platform: linux/arm64
-    image: ratatoskr/broker
+    platform: linux/arm64 # Run in arm64 linux container
+    image: ratatoskr/broker # Namespaced artifact (image) name
 
     build:
       context: .
@@ -17,3 +9,14 @@ services:
 
     ports:
       - "1883:1883"
+
+  diagnostics:
+    platform: linux/arm64
+    image: ratatoskr/diagnostics
+
+    build:
+      context: .
+      dockerfile: ./src-diagnostics/Dockerfile
+
+    depends_on:
+      - broker
