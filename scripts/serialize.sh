@@ -9,7 +9,7 @@ BIN_PATH=""
 # Handle options
 getopts "o:" FLAG_IN
 case ${FLAG_IN} in
-    o) BIN_PATH=${FLAG_IN} ;;
+    o) BIN_PATH=${OPTARG} ;;
     *) continue ;;
 esac
 
