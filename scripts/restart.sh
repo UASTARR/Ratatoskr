@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Setup QEMU emulator
+echo "Setting up qemu emulator..."
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+
+# Turn off current docker services across the host
 echo "Restarting docker services..."
 docker compose down -v
 if [ $? -eq 0 ]; then
@@ -9,6 +14,7 @@ else
     exit 1
 fi
 
+# Restart / Turn on this applications specific docker services
 echo "Starting new docker services..."
 docker compose up --build -d
 if [ $? -eq 0 ]; then

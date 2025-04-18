@@ -19,5 +19,7 @@ RUN apt-get install -y \
 # Expose the mosquitto MQTT port
 EXPOSE 1883
 
-# Run the mosquitto broker
-CMD ["mosquitto", "-d"]
+COPY ./src-broker/mosquitto.conf /etc/mosquitto/mosquitto.conf
+
+# Run the mosquitto broker as a foreground process (keeps docker open when detatched)
+CMD ["mosquitto", "-v", "-c", "/etc/mosquitto/mosquitto.conf"]
