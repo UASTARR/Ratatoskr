@@ -13,8 +13,8 @@ RUN apt-get install -y \
     curl \
     gcc \
     g++ \
-    make && \
-    rm -rf /var/lib/apt/lists/*
+    make \
+    && rm -rf /var/lib/apt/lists/*
 
 # Prepare the root of the virtual environment
 COPY CMakeLists.txt /ratatoskr/

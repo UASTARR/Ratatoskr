@@ -3,6 +3,7 @@
  */
 
 #include <stdio.h>
+#include <MQTTClient.h>
 #include "main.hpp"
 
 int main() {

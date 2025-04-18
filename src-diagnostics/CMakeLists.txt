@@ -1,4 +1,4 @@
-# Setup
+# Sub-Project Specifications
 cmake_minimum_required(VERSION 3.10.2)
 project(diagnostics CXX)
 
@@ -10,6 +10,7 @@ list(FILTER WEATHER_STATION_SRC EXCLUDE REGEX "src/.*.test.cpp")
 
 # Create executable for weather station application
 add_executable(${PROJECT_NAME} ${WEATHER_STATION_SRC})
+target_link_libraries(${PROJECT_NAME} "paho-mqtt3c") # Need to link lib from build/lib
 
 ### TESTING ##############################################################################
 
