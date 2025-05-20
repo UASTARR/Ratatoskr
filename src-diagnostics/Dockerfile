@@ -25,7 +25,9 @@ COPY ./src-diagnostics/CMakeLists.txt /ratatoskr/src-diagnostics/
 COPY ./src-diagnostics/src/ /ratatoskr/src-diagnostics/src/
 
 # Get cmake going
-RUN cmake -S .
-RUN cmake --build .
+RUN mkdir -p /ratatoskr/build && \
+    cd /ratatoskr/build && \
+    cmake .. && \
+    make all
 
 CMD ["./bin/diagnostics"]
