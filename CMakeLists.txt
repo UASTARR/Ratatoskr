@@ -16,8 +16,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "CLANG"
     target_compile_options(gtest_main PRIVATE -w)
 endif()
 
-# Configure PAHO shared library compilation flags and add
-set(PAHO_ENABLE_TESTING FALSE)
+# Force Paho to stop compiling tests
+set(PAHO_ENABLE_TESTING OFF CACHE BOOL "Disable Paho tests" FORCE)
 add_subdirectory(vendor/paho.mqtt.c-1.3.14)
 
 # Add source subdirectories

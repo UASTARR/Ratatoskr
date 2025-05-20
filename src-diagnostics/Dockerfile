@@ -30,4 +30,4 @@ RUN mkdir -p /ratatoskr/build && \
     cmake .. && \
     make all
 
-CMD ["./bin/diagnostics"]
+CMD ["./build/bin/diagnostics"]
