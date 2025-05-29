@@ -32,10 +32,13 @@ class Main
 /** ENTRY *******************************************************************************/
 
 int main() {
+    const char *serverName = "tcp://localhost:1883";
+    const char *clientName = "client";
+
     printf("Starting loopback example...\n");
 
     MQTTClient client;
-    MQTTClient_create(&client, "tcp://localhost:1883", "client", MQTTCLIENT_PERSISTENCE_NONE, NULL);
+    MQTTClient_create(&client, serverName, clientName, MQTTCLIENT_PERSISTENCE_NONE, NULL);
 
     int32_t setCallbackRes = MQTTClient_setCallbacks(
         client, NULL, NULL, Main::messageArrived, NULL
@@ -61,12 +64,18 @@ int main() {
     conn_opts.keepAliveInterval = 10;
     conn_opts.cleansession = 1;
 
-    // Use credentaials created with the cluster (TODO: ???)
-    // conn_opts.username = "<your_username>";
-    // conn_opts.password = "<your_password>";
-    int32_t connectRes = MQTTClient_connect(client, &conn_opts);
-    printf("is connected %d \n", connectRes);
-
+    if ( int32_t connectRes = MQTTClient_connect(client, &conn_opts) )
+    {
+        printf(
+            "Failed to connect to the server '%s' from '%s'\n", serverName, clientName
+        );
+        return 1;
+    }
+    else
+    {
+        printf("is connected %d \n", connectRes);
+    }
+    
     // the topic where you publish to and subscribe to
 
     const char* topic = "/diagnostics";
