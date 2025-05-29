@@ -13,8 +13,8 @@ RUN apt-get install -y \
     curl \
     gcc \
     g++ \
-    make && \
-    rm -rf /var/lib/apt/lists/*
+    make \
+    && rm -rf /var/lib/apt/lists/*
 
 # Prepare the root of the virtual environment
 COPY CMakeLists.txt /ratatoskr/
@@ -25,7 +25,9 @@ COPY ./src-diagnostics/CMakeLists.txt /ratatoskr/src-diagnostics/
 COPY ./src-diagnostics/src/ /ratatoskr/src-diagnostics/src/
 
 # Get cmake going
-RUN cmake -S .
-RUN cmake --build .
+RUN mkdir -p /ratatoskr/build && \
+    cd /ratatoskr/build && \
+    cmake .. && \
+    make all
 
-CMD ["./bin/diagnostics"]
+CMD ["./build/bin/diagnostics"]
